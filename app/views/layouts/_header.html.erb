@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div id="navbarExampleTransparentExample" class="navbar-menu">
+  <div class="navbar-menu">
     <div class="navbar-start">
       <div class="navbar-item has-dropdown is-hoverable">
         <%= link_to "Help", root_path, class: "navbar-link" %>
@@ -23,18 +23,41 @@
         </div>
       </div>
     </div>
-
+    
     <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="field is-grouped">
-          <p class="control">
-            <%= link_to "Log in", new_user_session_path, class: "button"%>
-          </p>
-          <p class="control">
-            <%= link_to "Sign up", new_user_registration_path, class: "button is-primary"%>
-          </p>
+      <% if user_signed_in? %>
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <%= link_to "Create an event", new_event_path, class: "button is-primary"%>
+            </p>
+          </div>
         </div>
-      </div>
+
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable ">
+              <%= link_to current_user.name, root_path, class: "navbar-link" %>
+              <div class="navbar-dropdown is-boxed is-right">
+                <%= link_to "Navbar item", root_path, class: "navbar-item" %>
+                <%= link_to "Navbar active item", root_path, class: "navbar-item is-active" %>
+                <hr class="navbar-divider">
+                <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-item" %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <%= link_to "Log in", new_user_session_path, class: "button"%>
+              </p>
+              <p class="control">
+                <%= link_to "Sign up", new_user_registration_path, class: "button is-primary"%>
+              </p>
+            </div>
+          </div>
+      <% end %>
     </div>
   </div>
 </nav>
