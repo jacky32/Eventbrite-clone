@@ -1,10 +1,19 @@
-<h1>Home</h1>
-<ul>
-  <% @events.each do |event| %>
-    <li>
-      <%= event.name %>
-      <%= event.date %>
-      <%= event.description %>
-    </li>
-  <% end %>
-</ul>
+<section class="is-medium">
+  <div class="columns is-multiline is-centered m-2">
+    <% @events.each do |event| %>
+      <%= link_to event_url(event.id), class: "column is-narrow is-clickable is-flex" do %>
+        <div class="box" style="max-width: 420px">
+          <h4 class="title is-4">
+            <%= event.name %>
+          </h4>
+          <div>
+            <%= event.date.to_fs(:long) unless event.date.nil? %>
+          </div>
+          <p>
+            <%= event.description %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>
