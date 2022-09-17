@@ -1,0 +1,28 @@
+<section class="section is-medium">
+    <div class="container">
+      <div class="columns is-centered">
+        <%= form_with model: @event do |f| %>
+          <p class="title">Create an event</p>
+
+
+          <div class="field">
+            <%= f.label :name, class: "label" %>
+            <div class="control">
+              <%= f.text_field :name, autofocus: true, class: "input is-medium" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= f.label :description, class: "label" %>
+            <%= f.text_area :description, class: "textarea is-medium" %>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <%= f.submit "Create event", class: "button is-link" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</section>
