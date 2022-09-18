@@ -7,8 +7,7 @@
             <%= event.name %>
           </h4>
           <div>
-            <%= event.start_date.to_fs(:long) unless event.start_date.nil? %>
-            <%= event.end_date.to_fs(:long) unless event.end_date.nil? %>
+            <%= event.display_date %>
           </div>
           <p>
             <%= event.description %>

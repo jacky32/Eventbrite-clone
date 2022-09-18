@@ -1,8 +1,17 @@
-<section>
-  <h3 class="title">
-    <%= @event.name %>
-  </h3>
-  <p class="is-size-5">
-    <%= @event.description %>
-  </p>
+<section class="section is-medium">
+  <div class="box container is-center">
+    <div class="field">
+      <h3 class="title">
+        <%= @event.name %>
+      </h3>
+    </div>
+    <div class="field">
+      <%= @event.display_date %>
+    </div>
+    <div class="field">
+      <p class="is-size-5">
+        <%= @event.description %>
+      </p>
+    </div>
+  </div>
 </section>

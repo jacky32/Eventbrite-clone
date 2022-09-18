@@ -19,12 +19,27 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    event
   end
+
+  def display_date
+    # same date
+    if event.start_date == event.end_date
+      event.start_date.to_fs(:long)
+    # different date
+    else
+      "#{event.start_date.to_fs(:long)} - #{event.end_date.to_fs(:long)}"
+    end
+  end
+  helper_method :display_date
 
   private
 
   def event_params
     params.require(:event).permit(:name, :description, :start_date, :end_date)
+  end
+
+  def event
+    @event ||= Event.find(params[:id])
   end
 end
