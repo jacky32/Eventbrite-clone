@@ -12,9 +12,17 @@
             </div>
           </div>
 
-          <div class="field">
-            <%= f.label :date, class: "label" %>
-            <%= f.date_field :date, class: "input is-medium" %>
+          <div class="field is-grouped">
+          <div class="control">
+              <%= f.label :event_start_date, class: "label" %>
+              <%= f.date_field :event_start_date, class: "input is-medium" %>
+          </div>
+
+
+            <div class="control">
+              <%= f.label :event_end_date, class: "label" %>
+              <%= f.date_field :event_end_date, class: "input is-medium" %>
+            </div>
           </div>
 
           <div class="field">
