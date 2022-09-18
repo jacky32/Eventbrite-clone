@@ -22,13 +22,13 @@ class EventsController < ApplicationController
     event
   end
 
-  def display_date
+  def display_date(given_event = event)
     # same date
-    if event.start_date == event.end_date
-      event.start_date.to_fs(:long)
+    if given_event.start_date == given_event.end_date
+      given_event.start_date.to_fs(:long)
     # different date
     else
-      "#{event.start_date.to_fs(:long)} - #{event.end_date.to_fs(:long)}"
+      "#{given_event.start_date.to_fs(:long)} - #{given_event.end_date.to_fs(:long)}"
     end
   end
   helper_method :display_date
