@@ -17,11 +17,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_124947) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.date "event_start_date"
+    t.date "start_date"
     t.time "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "event_end_date"
+    t.date "end_date"
   end
 
   create_table "users", force: :cascade do |t|
