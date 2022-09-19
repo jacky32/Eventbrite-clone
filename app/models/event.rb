@@ -1,11 +1,6 @@
 class Event < ApplicationRecord
-  def display_date
-    # same date
-    if start_date == end_date
-      start_date.to_fs(:long)
-    # different date
-    else
-      "#{start_date.to_fs(:long)} - #{end_date.to_fs(:long)}"
-    end
-  end
+  # has_many :attendees, foreign_key: 'attendee_id', class_name: 'User'
+  # belongs_to :organizer, class_name: 'User'
+  belongs_to :organiser, class_name: 'User', foreign_key: 'user_id'
+  validates :name, :start_date, :end_date, :description, presence: true
 end
