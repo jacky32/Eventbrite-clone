@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @current_time = Time.current
   end
 
   def create
@@ -23,12 +24,16 @@ class EventsController < ApplicationController
   end
 
   def display_date(given_event = event)
+    start_date = given_event.start_date
+    end_date = given_event.end_date
     # same date
-    if given_event.start_date == given_event.end_date
-      given_event.start_date.to_fs(:long)
+    if start_date == end_date
+      start_date.to_fs(:long)
     # different date
+    elsif start_date.year == end_date.year && start_date.year == Date.today.year
+      start_date.to_fs(:day_and_month)
     else
-      "#{given_event.start_date.to_fs(:long)} - #{given_event.end_date.to_fs(:long)}"
+      "#{start_date.to_fs(:long)} - #{end_date.to_fs(:long)}"
     end
   end
   helper_method :display_date
