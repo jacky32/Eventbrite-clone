@@ -37,7 +37,7 @@
         <div class="navbar-menu">
           <div class="navbar-end">
             <div class="navbar-item has-dropdown is-hoverable ">
-              <%= link_to current_user.name, root_path, class: "navbar-link" %>
+              <%= link_to current_user.name, user_url(current_user.id), class: "navbar-link" %>
               <div class="navbar-dropdown is-boxed is-right">
                 <%= link_to "Navbar item", root_path, class: "navbar-item" %>
                 <%= link_to "Navbar active item", root_path, class: "navbar-item is-active" %>
