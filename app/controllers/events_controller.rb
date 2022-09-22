@@ -27,7 +27,7 @@ class EventsController < ApplicationController
     start_date = given_event.start_date
     end_date = given_event.end_date
     # same date
-    if start_date == end_date
+    if start_date == end_date || end_date.nil?
       start_date.to_fs(:long)
     # different date
     elsif start_date.year == end_date.year && start_date.year == Date.today.year

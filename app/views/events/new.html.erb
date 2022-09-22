@@ -17,9 +17,10 @@
 
           <div class="field">
             <input type="datetime">
-            <% f.datetime_select :start_date%>
           </div>
 
+          <%= f.hidden_field :start_date, value: DateTime.now.in_time_zone('Prague'), id: "start_date" %>
+          <%= f.hidden_field :end_date, id: "end_date" %>
 
           <div class="field">
             <%= f.label :name, class: "label" %>

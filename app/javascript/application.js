@@ -12,32 +12,25 @@ const calendars = bulmaCalendar.attach('[type="datetime"]', {
   dateFormat: "dd/MM/yyyy",
   headerPosition: "top",
   weekStart: 1,
-  minuteSteps: 15,
+  minuteSteps: 1,
+  validateLabel: "Save",
   minDate: yesterday,
   disabledDates: [yesterday],
-  startDate: tommorow,
-  endDate: tommorow,
+  startDate: today,
+  startTime: today,
   isRange: true,
   showTodayButton: false,
 });
 
 // Loop on each calendar initialized
 calendars.forEach((calendar) => {
+  const startDateElement = document.querySelector("#start_date");
+  const endDateElement = document.querySelector("#end_date");
   calendar.on("save", () => {
-    console.log(calendar.startDate);
-    console.log(calendar.endDate);
+    startDateElement.value = calendar.startDate;
+    endDateElement.value = calendar.endDate;
   });
   calendar.on("hide", () => {
     calendar.save(); //sometimes saves twice
   });
 });
-
-// To access to bulmaCalendar instance of an element
-const element = document.querySelector("#my-element");
-if (element) {
-  // bulmaCalendar instance is available as element.bulmaCalendar
-  element.bulmaCalendar.on("select", (datepicker) => {
-    console.log(datepicker.data.startDate());
-    console.log(datepicker.data.endDate());
-  });
-}
