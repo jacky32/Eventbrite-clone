@@ -1,7 +1,8 @@
 class Event < ApplicationRecord
-  # has_many :attendees, foreign_key: 'attendee_id', class_name: 'User'
-  # belongs_to :organizer, class_name: 'User'
-  belongs_to :organiser, class_name: 'User', foreign_key: 'user_id'
+  has_many :event_attendings, foreign_key: :attended_event_id
+  has_many :attendees, through: :event_attendings, source: :event_attendee
+  belongs_to :organiser, foreign_key: 'organiser_id', class_name: 'User'
+
   validates :name, :start_date, :description, presence: true
   validate :start_date_cannot_be_equal_to_end_date, :must_be_longer_than_30_minutes
 
@@ -22,7 +23,7 @@ class Event < ApplicationRecord
   def display_date
     get_date(start_date, end_date)
   end
-  
+
   private
 
   def get_date(start_date, end_date)
@@ -58,6 +59,4 @@ class Event < ApplicationRecord
 
     start_date.day == end_date.day
   end
-
-
 end

@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # has_many :organized_events, foreign_key: 'organizer_id', class_name: 'User'
-  # belongs_to :attended_events, class_name: 'User'
-  has_many :events, dependent: :destroy
+  has_many :event_attendings, foreign_key: :event_attendee_id
+  has_many :attended_events, through: :event_attendings
+  has_many :organised_events, class_name: 'Event', dependent: :destroy
 
-  ROLES = %w[attendee organizer]
+  ROLES = %w[attendee organiser]
 end
