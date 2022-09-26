@@ -1,4 +1,6 @@
-<% if attends? %>
+<% if organiser? %>
+  <%= link_to "Edit event", edit_event_path(@event.id), class:"button is-medium is-primary" %>
+<% elsif attends? %>
   <%= button_to "Do not attend", event_remove_attendee_path(@event), class: "button is-medium is-warning" %>
 <% else %>
   <%= button_to "Attend", event_add_attendee_path(@event), class: "button is-medium is-success" %>

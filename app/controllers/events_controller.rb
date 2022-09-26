@@ -24,6 +24,20 @@ class EventsController < ApplicationController
     @attendees = event.attendees
   end
 
+  def edit
+    redirect_to event unless organiser? # TODO: Add flash
+    event
+  end
+
+  def update
+    event
+    if event.update(event_params)
+      redirect_to event
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def toggle_attendee; end
 
   def add_attendee
@@ -44,6 +58,11 @@ class EventsController < ApplicationController
     event.attendees.exists?(user.id)
   end
   helper_method :attends?
+
+  def organiser?(user = current_user)
+    event.organiser == user
+  end
+  helper_method :organiser?
 
   private
 
