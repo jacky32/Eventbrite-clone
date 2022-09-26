@@ -27,15 +27,17 @@ class EventsController < ApplicationController
   def toggle_attendee; end
 
   def add_attendee
-    Event.find(params[:event_id]).attendees << current_user
+    @event = Event.find(params[:event_id])
+    @event.attendees << current_user
 
-    redirect_to event_path(params[:event_id])
+    redirect_to event_path(@event)
   end
 
   def remove_attendee
-    Event.find(params[:event_id]).attendees.delete(current_user)
+    @event = Event.find(params[:event_id])
+    @event.attendees.delete(current_user)
 
-    redirect_to event_path(params[:event_id])
+    redirect_to event_path(@event)
   end
 
   private
