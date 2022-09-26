@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :users
   resources :events
   resources :events do
-    post :toggle_attendee
     post :add_attendee
     post :remove_attendee
   end
