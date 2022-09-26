@@ -15,12 +15,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_092204) do
   enable_extension "plpgsql"
 
   create_table "event_attendings", force: :cascade do |t|
-    t.bigint "attended_events_id"
-    t.bigint "event_attendees_id"
+    t.bigint "attended_event_id"
+    t.bigint "event_attendee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["attended_events_id"], name: "index_event_attendings_on_attended_events_id"
-    t.index ["event_attendees_id"], name: "index_event_attendings_on_event_attendees_id"
+    t.index ["attended_event_id"], name: "index_event_attendings_on_attended_event_id"
+    t.index ["event_attendee_id"], name: "index_event_attendings_on_event_attendee_id"
   end
 
   create_table "events", force: :cascade do |t|

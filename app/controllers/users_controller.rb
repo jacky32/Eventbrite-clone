@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     user
-    @organised_events = user.events
+    @organised_events = Event.where(organiser_id: user.id)
   end
 
   private

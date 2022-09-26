@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      redirect_to root_path
+      redirect_to event_path(@event)
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,7 +21,24 @@ class EventsController < ApplicationController
 
   def show
     event
+    @attendees = event.attendees
   end
+
+  def toggle_attendee; end
+
+  def add_attendee
+    Event.find(params[:event_id]).attendees << current_user
+
+    redirect_to event_path(params[:event_id])
+  end
+
+  def remove_attendee
+    Event.find(params[:event_id]).attendees.delete(current_user)
+
+    redirect_to event_path(params[:event_id])
+  end
+
+  private
 
   def event_params
     params.require(:event).permit(:name, :description, :start_date, :end_date, :organiser_id)

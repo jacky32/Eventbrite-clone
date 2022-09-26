@@ -18,8 +18,19 @@
       </p>
     </div>
     <div class="buttons is-centered">
-      <button class="button is-medium is-primary">attend</button>
+      <%= button_to "Attend", event_add_attendee_path(@event.id), class: "button is-medium is-primary" %>
+      <%= button_to "Do not attend", event_remove_attendee_path(@event.id), class: "button is-medium is-primary" %>
       <%= link_to "Back", :back, class: "button is-medium" %>
+    </div>
+  </div>
+  <div class="box container is-center">
+    <div class="field">
+      <h4 class="subtitle">Attendees</h4>
+    </div>
+    <div class="field">
+      <% @attendees.each do |attendee| %>
+        <%= attendee.name %>
+      <% end %>
     </div>
   </div>
 </section>
