@@ -1,0 +1,5 @@
+<% if attends? %>
+  <%= button_to "Do not attend", event_remove_attendee_path(@event), class: "button is-medium is-primary" %>
+<% else %>
+  <%= button_to "Attend", event_add_attendee_path(@event), class: "button is-medium is-primary" %>
+<% end %>

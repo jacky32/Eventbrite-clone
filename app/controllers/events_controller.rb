@@ -40,6 +40,11 @@ class EventsController < ApplicationController
     redirect_to event_path(@event)
   end
 
+  def attends?(user = current_user)
+    event.attendees.exists?(user.id)
+  end
+  helper_method :attends?
+
   private
 
   def event_params

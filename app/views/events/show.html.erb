@@ -18,8 +18,7 @@
       </p>
     </div>
     <div class="buttons is-centered">
-      <%= button_to "Attend", event_add_attendee_path(@event.id), class: "button is-medium is-primary" %>
-      <%= button_to "Do not attend", event_remove_attendee_path(@event.id), class: "button is-medium is-primary" %>
+      <%= render 'events/attend_buttons' %>
       <%= link_to "Back", :back, class: "button is-medium" %>
     </div>
   </div>
