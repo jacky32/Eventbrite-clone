@@ -11,9 +11,11 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.organiser = current_user
 
     if @event.save
       redirect_to event_path(@event)
+      @event.attendees << current_user
     else
       render :new, status: :unprocessable_entity
     end
@@ -37,8 +39,6 @@ class EventsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-
-  def toggle_attendee; end
 
   def add_attendee
     @event = Event.find(params[:event_id])
