@@ -40,7 +40,7 @@ if (isValidDate(endDate)) {
     isRange: true,
     showTodayButton: false,
   });
-} else {
+} else if (isValidDate(startDate)) {
   calendars = bulmaCalendar.attach('[type="datetime"]', {
     dateFormat: "dd/MM/yyyy",
     headerPosition: "top",
@@ -51,6 +51,18 @@ if (isValidDate(endDate)) {
     disabledDates: [yesterday],
     startDate: startDate,
     startTime: startDate,
+    isRange: true,
+    showTodayButton: false,
+  });
+} else {
+  calendars = bulmaCalendar.attach('[type="datetime"]', {
+    dateFormat: "dd/MM/yyyy",
+    headerPosition: "top",
+    weekStart: 1,
+    minuteSteps: 1,
+    validateLabel: "Save",
+    minDate: yesterday,
+    disabledDates: [yesterday],
     isRange: true,
     showTodayButton: false,
   });

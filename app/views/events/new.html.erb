@@ -19,11 +19,12 @@
             </div>
           <% end %>
 
+          <%= f.label "Start and end date", class: "label" %>
           <div class="field">
             <input type="datetime">
           </div>
 
-          <%= f.hidden_field :start_date, value: @current_datetime, id: "start_date" %>
+          <%= f.hidden_field :start_date, id: "start_date" %>
           <%= f.hidden_field :end_date, id: "end_date" %>
 
           <div class="field">

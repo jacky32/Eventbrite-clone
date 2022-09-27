@@ -6,13 +6,11 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @current_datetime = DateTime.current
   end
 
   def create
     @event = Event.new(event_params)
     @event.organiser = current_user
-    @current_datetime = DateTime.current
 
     if @event.save
       redirect_to event_path(@event)
