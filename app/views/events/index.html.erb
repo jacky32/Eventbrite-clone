@@ -1,6 +1,15 @@
 <%# TODO: add UPCOMING/PAST/CURRENT events %>
-<section class="is-medium">
-  <div class="columns is-multiline is-centered m-2">
+<section class="is-medium is-centered m-4">
+  <div class="field is-grouped-centered">
+    <div class="buttons is-centered">
+      <div class="button is-rounded">All</div>
+      <div class="button is-rounded">Happening</div>
+      <div class="button is-rounded">Upcoming</div>
+      <div class="button is-rounded">Past</div>
+    </div>
+    
+  </div>
+  <div class="columns is-multiline is-centered">
     <% @events.each do |event| %>
       <div class="column is-narrow is-flex">
         <%= link_to event_url(event.id), class: "box", style: "max-width:420px" do %>
