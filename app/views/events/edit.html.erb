@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_import_module_tag "calendar" %>
+<% end %>
+
 <section class="section is-normal">
     <div class="container">
       <div class="columns is-centered">
@@ -18,7 +22,7 @@
           <div class="field">
             <input type="datetime">
           </div>
-          
+
           <%= f.hidden_field :start_date, id: "start_date" %>
           <%= f.hidden_field :end_date, id: "end_date" %>
 
