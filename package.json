@@ -5,6 +5,7 @@
     "build:css": "sass ./app/assets/stylesheets/application.bulma.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   },
   "dependencies": {
+    "@creativebulma/bulma-divider": "^1.1.0",
     "bulma": "^0.9.4",
     "bulma-calendar": "^6.1.18",
     "sass": "^1.54.9"

@@ -1,11 +1,12 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   def index
+    params[:filter] ||= 'all'
     @current_filter = params[:filter]
-    @events = Event.all
-    @events = Event.happening if @current_filter == "happening"
-    @events = Event.upcoming if @current_filter == "upcoming"
-    @events = Event.past if @current_filter == "past"
+    @events = Event.all if @current_filter == 'all'
+    @events = Event.happening if @current_filter == 'happening'
+    @events = Event.upcoming if @current_filter == 'upcoming'
+    @events = Event.past if @current_filter == 'past'
   end
 
   def new
