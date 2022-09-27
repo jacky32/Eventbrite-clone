@@ -1,0 +1,15 @@
+<% @events.each do |event| %>
+  <div class="column is-narrow is-flex">
+    <%= link_to event_url(event.id), class: "box", style: "max-width:420px" do %>
+      <h4 class="title is-4">
+        <%= event.name %>
+      </h4>
+      <div>
+        <%= event.display_date %>
+      </div>
+      <p>
+        <%= event.description %>
+      </p>
+    <% end %>
+  </div>
+<% end %>

@@ -2,28 +2,14 @@
 <section class="is-medium is-centered m-4">
   <div class="field is-grouped-centered">
     <div class="buttons is-centered">
-      <div class="button is-rounded">All</div>
-      <div class="button is-rounded">Happening</div>
-      <div class="button is-rounded">Upcoming</div>
-      <div class="button is-rounded">Past</div>
+      <%= link_to 'All', events_path(filter: "all"), class: 'button is-rounded'%>
+      <%= link_to 'Happening', events_path(filter: "happening"), class: 'button is-rounded'%>
+      <%= link_to 'Upcoming', events_path(filter: "upcoming"), class: 'button is-rounded'%>
+      <%= link_to 'Past', events_path(filter: "past"), class: 'button is-rounded'%>
     </div>
     
   </div>
   <div class="columns is-multiline is-centered">
-    <% @events.each do |event| %>
-      <div class="column is-narrow is-flex">
-        <%= link_to event_url(event.id), class: "box", style: "max-width:420px" do %>
-          <h4 class="title is-4">
-            <%= event.name %>
-          </h4>
-          <div>
-            <%= event.display_date %>
-          </div>
-          <p>
-            <%= event.description %>
-          </p>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render 'events/list_events' %>
   </div>
 </section>
