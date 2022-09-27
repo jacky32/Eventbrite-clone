@@ -6,7 +6,7 @@
 
           <% if @event.errors.any? %>
             <div class="notification is-danger">
-              <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being created:</h2>
+              <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being edited:</h2>
               <ul>
                 <% @event.errors.each do |error| %>
                   <li><%= error.full_message %></li>
@@ -18,8 +18,7 @@
           <div class="field">
             <input type="datetime">
           </div>
-          <%# TOOD pass in the view calendar the saved dates %>
-
+          
           <%= f.hidden_field :start_date, id: "start_date" %>
           <%= f.hidden_field :end_date, id: "end_date" %>
 
@@ -30,14 +29,10 @@
             </div>
           </div>
 
-
-
           <div class="field">
             <%= f.label :description, class: "label" %>
             <%= f.text_area :description, class: "textarea is-medium " %>
           </div>
-
-          <%= f.hidden_field :organiser_id, value: current_user.id %>
 
           <div class="field">
             <div class="control">

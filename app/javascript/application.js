@@ -1,31 +1,64 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import bulmaCalendar from "bulma-calendar";
 
-// get tommorow's date
+const startDateElement = document.querySelector("#start_date");
+const endDateElement = document.querySelector("#end_date");
+
+const startDateValue = startDateElement.value;
+const endDateValue = endDateElement.value;
+
+const convertToDate = (value) => {
+  const convertedDate = value.slice(0, 10) + "T" + value.slice(11, 19);
+  return new Date(convertedDate);
+};
+
+const isValidDate = (d) => {
+  return d instanceof Date && !isNaN(d);
+};
+
+const startDate = convertToDate(startDateValue);
+const endDate = convertToDate(endDateValue);
+
+// get yesterday's date
 const today = new Date(Date.now());
-const tommorow = new Date();
 const yesterday = new Date();
 yesterday.setDate(today.getDate() - 1);
-tommorow.setDate(today.getDate() + 1);
 
-const calendars = bulmaCalendar.attach('[type="datetime"]', {
-  dateFormat: "dd/MM/yyyy",
-  headerPosition: "top",
-  weekStart: 1,
-  minuteSteps: 1,
-  validateLabel: "Save",
-  minDate: yesterday,
-  disabledDates: [yesterday],
-  startDate: today,
-  startTime: today,
-  isRange: true,
-  showTodayButton: false,
-});
+let calendars;
+if (isValidDate(endDate)) {
+  calendars = bulmaCalendar.attach('[type="datetime"]', {
+    dateFormat: "dd/MM/yyyy",
+    headerPosition: "top",
+    weekStart: 1,
+    minuteSteps: 1,
+    validateLabel: "Save",
+    minDate: yesterday,
+    disabledDates: [yesterday],
+    startDate: startDate,
+    startTime: startDate,
+    endDate: endDate,
+    endTime: endDate,
+    isRange: true,
+    showTodayButton: false,
+  });
+} else {
+  calendars = bulmaCalendar.attach('[type="datetime"]', {
+    dateFormat: "dd/MM/yyyy",
+    headerPosition: "top",
+    weekStart: 1,
+    minuteSteps: 1,
+    validateLabel: "Save",
+    minDate: yesterday,
+    disabledDates: [yesterday],
+    startDate: startDate,
+    startTime: startDate,
+    isRange: true,
+    showTodayButton: false,
+  });
+}
 
 // Loop on each calendar initialized
 calendars.forEach((calendar) => {
-  const startDateElement = document.querySelector("#start_date");
-  const endDateElement = document.querySelector("#end_date");
   calendar.on("save", () => {
     startDateElement.value = calendar.startDate;
     endDateElement.value = calendar.endDate;
