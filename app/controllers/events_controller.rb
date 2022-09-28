@@ -68,6 +68,15 @@ class EventsController < ApplicationController
   end
   helper_method :organiser?
 
+  def active_filter_class(filter)
+    if params[:filter] == filter
+      'is-active'
+    else
+      ''
+    end
+  end
+  helper_method :active_filter_class
+
   private
 
   def event_params

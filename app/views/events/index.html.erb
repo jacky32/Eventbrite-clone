@@ -2,10 +2,10 @@
 <section class="is-medium is-centered m-4">
   <div class="field is-grouped-centered">
     <div class="buttons is-centered">
-      <%= link_to 'All', events_path(filter: "all"), class: 'button is-rounded is-active'%>
-      <%= link_to 'Happening', events_path(filter: "happening"), class: 'button is-rounded'%>
-      <%= link_to 'Upcoming', events_path(filter: "upcoming"), class: 'button is-rounded'%>
-      <%= link_to 'Past', events_path(filter: "past"), class: 'button is-rounded'%>
+      <%= link_to 'All', events_path(filter: "all"), class: "button is-rounded " + active_filter_class('all') %>
+      <%= link_to 'Happening', events_path(filter: "happening"), class: "button is-rounded " + active_filter_class('happening') %>
+      <%= link_to 'Upcoming', events_path(filter: "upcoming"), class: "button is-rounded " + active_filter_class('upcoming') %>
+      <%= link_to 'Past', events_path(filter: "past"), class: "button is-rounded " + active_filter_class('past') %>
     </div>
   </div>
   <%= render 'events/list_events' %>
