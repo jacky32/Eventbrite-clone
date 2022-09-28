@@ -1,5 +1,16 @@
 <% if organiser? %>
   <%= link_to "Edit event", edit_event_path(@event.id), class:"button is-medium is-primary" %>
+  <%= button_to "Destroy", event_path(@event),  
+                  method: :delete,
+                  class: "button is-danger is-medium",
+                  form: {
+                    data: {
+                      turbo: false,
+                      controller: "confirmation",
+                      action: 'submit->confirmation#confirm',
+                      confirmation_message_value: "Are you sure you want to delete?",
+                    }
+                  }%>
 <% elsif attends? %>
   <%= button_to "Do not attend", event_remove_attendee_path(@event), class: "button is-medium is-warning" %>
 <% else %>

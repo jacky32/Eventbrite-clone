@@ -44,6 +44,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    event
+    event.destroy
+
+    redirect_to root_path, status: :see_other
+  end
+
   def add_attendee
     @event = Event.find(params[:event_id])
     @event.attendees << current_user

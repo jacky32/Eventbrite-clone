@@ -7,7 +7,6 @@
       <div class="columns is-centered">
         <%= form_with model: @event do |f| %>
           <h1 class="title">Create an event</h1>
-
           <% if @event.errors.any? %>
             <div class="notification is-danger">
               <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being edited:</h2>

@@ -27,7 +27,7 @@
       <h4 class="subtitle">Attendees</h4>
     </div>
     <div class="field">
-      <div class = "buttons is-centered">
+      <div class="buttons is-centered">
         <% @attendees.each do |attendee| %>
             <%= link_to attendee.name, attendee, class: "button is-normal is-link is-light"%>
         <% end %>
