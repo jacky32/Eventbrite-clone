@@ -5,14 +5,19 @@
     <% @events.happening.each do |event| %>
       <div class="column is-narrow is-flex">
         <%= link_to event_url(event.id), class: "box", style: "max-width:420px" do %>
-          <h4 class="title is-4">
+          <h4 class="title is-4 mb-2">
             <%= event.name %>
           </h4>
-          <div>
+          <div class="has-text-weight-bold">
             <%= event.display_date %>
           </div>
+          <div>
+            Organiser:
+            <%= event.organiser.name %>
+          </div>
+          <hr class="my-2">
           <p>
-            <%= event.description %>
+            <%= event.description[0, 250] %>
           </p>
         <% end %>
       </div>
@@ -25,14 +30,19 @@
     <% @events.upcoming.each do |event| %>
       <div class="column is-narrow is-flex">
         <%= link_to event_url(event.id), class: "box", style: "max-width:420px" do %>
-          <h4 class="title is-4">
+          <h4 class="title is-4 mb-2">
             <%= event.name %>
           </h4>
-          <div>
+          <div class="has-text-weight-bold">
             <%= event.display_date %>
           </div>
+          <div>
+            Organiser:
+            <%= event.organiser.name %>
+          </div>
+          <hr class="my-2">
           <p>
-            <%= event.description %>
+            <%= event.description[0, 250] %>
           </p>
         <% end %>
       </div>
@@ -45,14 +55,19 @@
     <% @events.past.each do |event| %>
       <div class="column is-narrow is-flex">
         <%= link_to event_url(event.id), class: "box", style: "max-width:420px" do %>
-          <h4 class="title is-4">
+          <h4 class="title is-4 mb-2">
             <%= event.name %>
           </h4>
-          <div>
+          <div class="has-text-weight-bold">
             <%= event.display_date %>
           </div>
+          <div>
+            Organiser:
+            <%= event.organiser.name %>
+          </div>
+          <hr class="my-2">
           <p>
-            <%= event.description %>
+            <%= event.description[0, 250] %>
           </p>
         <% end %>
       </div>
@@ -64,14 +79,19 @@
     <% @events.each do |event| %>
       <div class="column is-narrow is-flex">
         <%= link_to event_url(event.id), class: "box", style: "max-width:420px" do %>
-          <h4 class="title is-4">
+          <h4 class="title is-4 mb-2">
             <%= event.name %>
           </h4>
-          <div>
+          <div class="has-text-weight-bold">
             <%= event.display_date %>
           </div>
+          <div>
+            Organiser:
+            <%= event.organiser.name %>
+          </div>
+          <hr class="my-2">
           <p>
-            <%= event.description %>
+            <%= event.description[0, 250] %>
           </p>
         <% end %>
       </div>

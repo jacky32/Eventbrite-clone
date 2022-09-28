@@ -24,11 +24,11 @@ class Event < ApplicationRecord
       return start_date.strftime('%B %d %Y at %H:%M').to_s
     end
     return "#{start_date.strftime('%B %d, %H:%M')}-#{end_date.strftime('%H:%M')}" if same_day?(start_date, end_date)
-    return "#{start_date.strftime('%B %d, %H:%M')} - #{end_date.strftime('%B %d, %H:%M')}" if same_month?(start_date,
+    return "#{start_date.strftime('%b %d, %H:%M')} - #{end_date.strftime('%b %d, %H:%M')}" if same_month?(start_date,
                                                                                                           end_date)
-    return "#{start_date.strftime('%B %d, %H:%M')} - #{end_date.strftime('%B %d, %H:%M')}" if this_year?(start_date)
+    return "#{start_date.strftime('%b %d, %H:%M')} - #{end_date.strftime('%b %d, %H:%M')}" if this_year?(start_date)
 
-    "#{start_date.strftime('%B %d %Y, %H:%M')} - #{end_date.strftime('%B %d %Y, %H:%M')}"
+    "#{start_date.strftime('%b %d %Y, %H:%M')} - #{end_date.strftime('%b %d %Y, %H:%M')}"
   end
 
   def same_year?(start_date, end_date)
