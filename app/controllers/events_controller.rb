@@ -74,25 +74,7 @@ class EventsController < ApplicationController
   end
   helper_method :organiser?
 
-  def active_filter_class(filter)
-    if params[:filter] == filter
-      'is-active'
-    else
-      ''
-    end
-  end
-  helper_method :active_filter_class
-
   private
-
-  def select_events(base = Event.all)
-    params[:filter] ||= 'all'
-    @current_filter = params[:filter]
-    @selected_events = base if @current_filter == 'all'
-    @selected_events = base.happening if @current_filter == 'happening'
-    @selected_events = base.upcoming if @current_filter == 'upcoming'
-    @selected_events = base.past if @current_filter == 'past'
-  end
 
   def event_params
     params.require(:event).permit(:name, :description, :start_date, :end_date, :organiser_id)
