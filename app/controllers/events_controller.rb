@@ -1,12 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
   def index
-    params[:filter] ||= 'all'
-    @current_filter = params[:filter]
-    @events = Event.all if @current_filter == 'all'
-    @events = Event.happening if @current_filter == 'happening'
-    @events = Event.upcoming if @current_filter == 'upcoming'
-    @events = Event.past if @current_filter == 'past'
+    select_events
   end
 
   def new
@@ -65,6 +60,10 @@ class EventsController < ApplicationController
     redirect_to event_path(@event)
   end
 
+  def attended
+    select_events(current_user.attended_events)
+  end
+
   def attends?(user = current_user)
     event.attendees.exists?(user.id)
   end
@@ -85,6 +84,15 @@ class EventsController < ApplicationController
   helper_method :active_filter_class
 
   private
+
+  def select_events(base = Event.all)
+    params[:filter] ||= 'all'
+    @current_filter = params[:filter]
+    @selected_events = base if @current_filter == 'all'
+    @selected_events = base.happening if @current_filter == 'happening'
+    @selected_events = base.upcoming if @current_filter == 'upcoming'
+    @selected_events = base.past if @current_filter == 'past'
+  end
 
   def event_params
     params.require(:event).permit(:name, :description, :start_date, :end_date, :organiser_id)

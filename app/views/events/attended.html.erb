@@ -1,0 +1,14 @@
+<section class="is-medium is-centered m-4">
+  <div class="field is-flex is-justify-content-center">
+    <h1 class="title my-3">Attended events</h1>
+  </div>
+  <div class="field is-grouped-centered">
+    <div class="buttons is-centered">
+      <%= link_to 'All', event_attended_path(filter: "all"), class: "button is-rounded " + active_filter_class('all') %>
+      <%= link_to 'Happening', event_attended_path(filter: "happening"), class: "button is-rounded " + active_filter_class('happening') %>
+      <%= link_to 'Upcoming', event_attended_path(filter: "upcoming"), class: "button is-rounded " + active_filter_class('upcoming') %>
+      <%= link_to 'Past', event_attended_path(filter: "past"), class: "button is-rounded " + active_filter_class('past') %>
+    </div>
+  </div>
+  <%= render 'events/list_events' %>
+</section>

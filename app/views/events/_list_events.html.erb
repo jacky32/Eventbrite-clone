@@ -1,100 +1,22 @@
 <% if params[:filter] == 'all' %>
 
-  <div class="divider">CURRENTLY HAPPENING</div>
+  <div class="divider">CURRENTLY HAPPENING</div>  
   <div class="columns is-multiline is-centered">
-    <% @events.happening.each do |event| %>
-      <div class="column is-narrow is-flex">
-        <%= link_to event_url(event.id), class: "box", style: "max-width:420px" do %>
-          <h4 class="title is-4 mb-2">
-            <%= event.name %>
-          </h4>
-          <div class="has-text-weight-bold">
-            <%= event.display_date %>
-          </div>
-          <div>
-            Organiser:
-            <%= event.organiser.name %>
-          </div>
-          <hr class="my-2">
-          <p>
-            <%= event.description[0, 250] %>
-          </p>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render partial: 'events/listed_event', collection: @selected_events.happening %>
   </div>
 
-  <div class="divider">UPCOMING</div>
-
+  <div class="divider">UPCOMING</div>  
   <div class="columns is-multiline is-centered">
-    <% @events.upcoming.each do |event| %>
-      <div class="column is-narrow is-flex">
-        <%= link_to event_url(event.id), class: "box", style: "max-width:420px" do %>
-          <h4 class="title is-4 mb-2">
-            <%= event.name %>
-          </h4>
-          <div class="has-text-weight-bold">
-            <%= event.display_date %>
-          </div>
-          <div>
-            Organiser:
-            <%= event.organiser.name %>
-          </div>
-          <hr class="my-2">
-          <p>
-            <%= event.description[0, 250] %>
-          </p>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render partial: 'events/listed_event', collection: @selected_events.upcoming %>
   </div>
 
-  <div class="divider">PAST</div>
-
+  <div class="divider">PAST</div>  
   <div class="columns is-multiline is-centered">
-    <% @events.past.each do |event| %>
-      <div class="column is-narrow is-flex">
-        <%= link_to event_url(event.id), class: "box", style: "max-width:420px" do %>
-          <h4 class="title is-4 mb-2">
-            <%= event.name %>
-          </h4>
-          <div class="has-text-weight-bold">
-            <%= event.display_date %>
-          </div>
-          <div>
-            Organiser:
-            <%= event.organiser.name %>
-          </div>
-          <hr class="my-2">
-          <p>
-            <%= event.description[0, 250] %>
-          </p>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render partial: 'events/listed_event', collection: @selected_events.past %>
   </div>
 
-<% else %>
+<% else %>  
   <div class="columns is-multiline is-centered">
-    <% @events.each do |event| %>
-      <div class="column is-narrow is-flex">
-        <%= link_to event_url(event.id), class: "box", style: "max-width:420px" do %>
-          <h4 class="title is-4 mb-2">
-            <%= event.name %>
-          </h4>
-          <div class="has-text-weight-bold">
-            <%= event.display_date %>
-          </div>
-          <div>
-            Organiser:
-            <%= event.organiser.name %>
-          </div>
-          <hr class="my-2">
-          <p>
-            <%= event.description[0, 250] %>
-          </p>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render partial: 'events/listed_event', collection: @selected_events.all %>
   </div>
 <% end %>

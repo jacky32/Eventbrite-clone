@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resources :events do
     post :add_attendee
     post :remove_attendee
+    get :attended
   end
 end
